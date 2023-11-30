@@ -31,14 +31,20 @@ COPY --from=containerbase /usr/local/bin/ /usr/local/bin/
 COPY --from=containerbase /usr/local/containerbase/ /usr/local/containerbase/
 RUN install-containerbase
 
-# add required gitpod packages
+# add required gitpod and other system packages
 RUN set -ex; \
-  install-apt make shellcheck sudo locales; \
+  install-apt \
+    g++ \
+    locales \
+    make \
+    shellcheck \
+    sudo \
+    ; \
   locale-gen en_US.UTF-8; \
   true
 
 # allow sudo without password
-RUN echo "gitpod ALL=NOPASSWD:ALL" > /etc/sudoers.d/gitpod; sudo id
+RUN echo "$USER_NAME ALL=NOPASSWD:ALL" > /etc/sudoers.d/$USER_NAME; sudo id
 
 # renovate: datasource=github-tags packageName=git/git
 RUN install-tool git v2.43.0
@@ -52,10 +58,13 @@ RUN install-tool docker v24.0.7
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
 RUN install-tool node 20.10.0
 
-# renovate: datasource=npm
-RUN install-tool corepack 0.23.0
+# enable buildin corepack
+RUN corepack enable
+
+# renovate: datasource=github-releases packageName=containerbase/python-prebuild
+RUN install-tool python 3.12.0
 
 # prepare some tools for gitpod
-RUN prepare-tool python
+#RUN prepare-tool python
 
-USER gitpod
+USER $USER_NAME
