@@ -8,16 +8,16 @@ FROM ubuntu:22.04@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e49
 ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
 
-LABEL org.opencontainers.image.source="https://github.com/containerbase/gitpod" \
+LABEL org.opencontainers.image.source="https://github.com/containerbase/devcontainer" \
       org.opencontainers.image.version="${CONTAINERBASE_VERSION}"
 
 # Compatibillity
-LABEL org.label-schema.vcs-url="https://github.com/containerbase/gitpod" \
+LABEL org.label-schema.vcs-url="https://github.com/containerbase/devcontainer" \
       org.label-schema.version="${CONTAINERBASE_VERSION}"
 
-ARG USER_NAME=gitpod
-ARG USER_ID=33333
-ARG PRIMARY_GROUP_ID=33333
+ARG USER_NAME=vscode
+ARG USER_ID=1000
+ARG PRIMARY_GROUP_ID=1000
 
 # Set env and shell
 ENV BASH_ENV=/usr/local/etc/env ENV=/usr/local/etc/env PATH=/home/$USER_NAME/bin:$PATH
@@ -31,7 +31,7 @@ COPY --from=containerbase /usr/local/bin/ /usr/local/bin/
 COPY --from=containerbase /usr/local/containerbase/ /usr/local/containerbase/
 RUN install-containerbase
 
-# add required gitpod and other system packages
+# add required devcontainer and other system packages
 RUN set -ex; \
   install-apt \
     g++ \
@@ -68,7 +68,7 @@ RUN corepack enable
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.12.0
 
-# prepare some tools for gitpod
+# prepare some tools for devcontainer
 #RUN prepare-tool python
 
 USER $USER_NAME

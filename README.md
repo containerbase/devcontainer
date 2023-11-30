@@ -1,12 +1,12 @@
-# containerbase gitpod
+# containerbase devcontainer
 
-[![Build status](https://github.com/containerbase/gitpod/actions/workflows/build.yml/badge.svg)](https://github.com/containerbase/gitpod/actions/workflows/build.yml?query=branch%3Amain)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/containerbase/gitpod)
-![License: MIT](https://img.shields.io/github/license/containerbase/gitpod)
+[![Build status](https://github.com/containerbase/devcontainer/actions/workflows/build.yml/badge.svg)](https://github.com/containerbase/devcontainer/actions/workflows/build.yml?query=branch%3Amain)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/containerbase/devcontainer)
+![License: MIT](https://img.shields.io/github/license/containerbase/devcontainer)
 
-A docker base image for Gitpod usage.
+A Docker base image for Visual Studio Code Dev Containers usage.
 
-This repository is the source for the Github container registry image [`ghcr.io/containerbase/gitpod`](https://github.com/containerbase/gitpod/pkgs/container/gitpod).
+This repository is the source for the Github container registry image [`ghcr.io/containerbase/devcontainer`](https://github.com/containerbase/devcontainer/pkgs/container/devcontainer).
 Commits to `main` branch are automatically build and published.
 
 This image allows `sudo` without password.

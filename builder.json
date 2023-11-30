@@ -1,5 +1,5 @@
 {
-  "image": "gitpod",
+  "image": "devcontainer",
   "versioning": "semver",
   "startVersion": "9.25.0",
   "cache": "docker-build-cache",
