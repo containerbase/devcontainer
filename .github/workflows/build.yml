@@ -41,7 +41,7 @@ jobs:
         with:
           command: docker-builder
           image-prefix: ghcr.io/${{ env.OWNER }}
-          platforms: ${{ env.PLATFORMS }
+          platforms: ${{ env.PLATFORMS }}
           last-only: true
           major-minor: false
           dry-run: ${{ env.DRY_RUN }}
