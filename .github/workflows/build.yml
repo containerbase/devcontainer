@@ -14,7 +14,7 @@ concurrency:
 env:
   DRY_RUN: ${{ github.ref_name != 'main' }}
   OWNER: ${{ github.repository_owner }}
-  PLATFORMS: linux/amd64
+  PLATFORMS: linux/amd64,linux/arm64
 
 permissions:
   contents: read
