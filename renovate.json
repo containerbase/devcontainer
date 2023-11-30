@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>containerbase/.github"],
+  "packageRules": [
+    {
+      "matchManagers": ["dockerfile"],
+      "enabled": false
+    }
+  ]
+}

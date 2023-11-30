@@ -1,0 +1,69 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  DRY_RUN: ${{ github.ref_name != 'main' }}
+  OWNER: ${{ github.repository_owner }}
+  PLATFORMS: linux/amd64
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      packages: write
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - uses: sigstore/cosign-installer@1fc5bd396d372bee37d608f955b336615edf79c8 # v3.2.0
+
+      - name: Docker registry login
+        if: env.DRY_RUN == 'false'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ env.OWNER }} --password-stdin
+
+      - name: Publish to ghcr.io
+        uses: containerbase/internal-tools@cce4ed496d2180a0ea727e82ec3e838c68d107b0 # v3.0.18
+        with:
+          command: docker-builder
+          image-prefix: ghcr.io/${{ env.OWNER }}
+          platforms: ${{ env.PLATFORMS }
+          last-only: true
+          major-minor: false
+          dry-run: ${{ env.DRY_RUN }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Init
+        run: ./bin/init.sh
+
+      - uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5 # v1.13.0
+        if: env.DRY_RUN == 'false'
+        with:
+          allowUpdates: true
+          body: See https://github.com/containerbase/base/releases/tag/${{ env.VERSION }} for more changes
+          commit: ${{ github.sha }}
+          name: ${{ env.VERSION }}
+          tag: v${{ env.VERSION }}
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,7 @@
+{
+  "image": "gitpod",
+  "versioning": "semver",
+  "startVersion": "9.25.0",
+  "cache": "docker-build-cache",
+  "buildArg": "CONTAINERBASE_VERSION"
+}
