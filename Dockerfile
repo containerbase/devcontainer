@@ -3,7 +3,7 @@ ARG CONTAINERBASE_VERSION=9.26.0
 
 FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} as containerbase
 
-FROM ubuntu:22.04 as base
+FROM ubuntu:22.04
 
 ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
