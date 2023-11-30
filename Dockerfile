@@ -41,7 +41,7 @@ RUN set -ex; \
 RUN echo "gitpod ALL=NOPASSWD:ALL" > /etc/sudoers.d/gitpod; sudo id
 
 # renovate: datasource=github-tags packageName=git/git
-RUN install-tool git v2.30.0
+RUN install-tool git v2.43.0
 
 # mark all directories as safe
 RUN git config --system --add safe.directory '*'
