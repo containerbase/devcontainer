@@ -44,7 +44,11 @@ RUN set -ex; \
   true
 
 # allow sudo without password
-RUN echo "$USER_NAME ALL=NOPASSWD:ALL" > /etc/sudoers.d/$USER_NAME; sudo id
+RUN set e; \
+  echo "$USER_NAME ALL = NOPASSWD: ALL" > /etc/sudoers.d/$USER_NAME; \
+  chmod 0440 /etc/sudoers.d/$USERNAME; \
+  sudo id; \
+  true
 
 # renovate: datasource=github-tags packageName=git/git
 RUN install-tool git v2.43.0
