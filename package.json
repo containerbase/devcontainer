@@ -13,7 +13,7 @@
     "prettier-fix": "prettier --cache -w -u '**/*.*'"
   },
   "devDependencies": {
-    "husky": "9.0.10",
+    "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-packagejson": "2.4.10"
