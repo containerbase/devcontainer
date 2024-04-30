@@ -57,7 +57,7 @@ RUN install-tool git v2.44.0
 RUN git config --system --add safe.directory '*'
 
 # renovate: datasource=github-releases packageName=moby/moby
-RUN install-tool docker v24.0.9
+RUN install-tool docker v26.1.0
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
 RUN install-tool node 20.12.2
