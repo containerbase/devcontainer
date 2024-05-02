@@ -72,3 +72,6 @@ RUN install-tool python 3.12.3
 #RUN prepare-tool python
 
 USER $USER_NAME
+
+# disable anoying download promt
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
