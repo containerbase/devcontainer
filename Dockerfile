@@ -1,5 +1,5 @@
 # renovate: datasource=docker depName=ghcr.io/containerbase/base
-ARG CONTAINERBASE_VERSION=10.17.0
+ARG CONTAINERBASE_VERSION=11.0.0
 
 FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} as containerbase
 
@@ -20,14 +20,14 @@ ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
 
 # Set env and shell
-ENV BASH_ENV=/usr/local/etc/env ENV=/usr/local/etc/env PATH=/home/$USER_NAME/bin:$PATH
+ENV BASH_ENV=/usr/local/etc/env ENV=/usr/local/etc/env
 SHELL ["/bin/bash" , "-c"]
 
 # This entry point ensures that dumb-init is run
 ENTRYPOINT [ "docker-entrypoint.sh" ]
 
 # Set up containerbase
-COPY --from=containerbase /usr/local/bin/ /usr/local/bin/
+COPY --from=containerbase /usr/local/sbin/ /usr/local/sbin/
 COPY --from=containerbase /usr/local/containerbase/ /usr/local/containerbase/
 RUN install-containerbase
 
