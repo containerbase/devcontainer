@@ -3,17 +3,13 @@ ARG CONTAINERBASE_VERSION=11.4.0
 
 FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} as containerbase
 
-FROM ubuntu:24.04@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+FROM ghcr.io/containerbase/ubuntu:24.04@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
 
 ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
 
 LABEL org.opencontainers.image.source="https://github.com/containerbase/devcontainer" \
       org.opencontainers.image.version="${CONTAINERBASE_VERSION}"
-
-# Compatibillity
-LABEL org.label-schema.vcs-url="https://github.com/containerbase/devcontainer" \
-      org.label-schema.version="${CONTAINERBASE_VERSION}"
 
 ARG USER_NAME=vscode
 ARG USER_ID=1000
