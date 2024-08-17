@@ -3,7 +3,7 @@ ARG CONTAINERBASE_VERSION=11.11.0
 
 FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} as containerbase
 
-FROM ghcr.io/containerbase/ubuntu:24.04@sha256:2e863c44b718727c860746568e1d54afd13b2fa71b160f5cd9058fc436217b30
+FROM ghcr.io/containerbase/ubuntu:24.04@sha256:c2072afab1848810176ac88daea6d9c714af8de454d8a574dafc6c41f355eb39
 
 ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
