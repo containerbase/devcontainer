@@ -62,7 +62,7 @@ RUN install-tool node 20.18.1
 RUN corepack enable
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
-RUN install-tool python 3.13.0
+RUN install-tool python 3.13.1
 
 # prepare some tools for devcontainer
 #RUN prepare-tool python
