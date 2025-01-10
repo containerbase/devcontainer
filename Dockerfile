@@ -47,7 +47,7 @@ RUN set e; \
   true
 
 # renovate: datasource=github-tags packageName=git/git
-RUN install-tool git v2.47.1
+RUN install-tool git v2.48.0
 
 # mark all directories as safe
 RUN git config --system --add safe.directory '*'
