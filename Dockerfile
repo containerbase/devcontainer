@@ -56,7 +56,7 @@ RUN git config --system --add safe.directory '*'
 RUN install-tool docker v27.5.1
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
-RUN install-tool node 20.18.2
+RUN install-tool node 22.13.1
 
 # enable buildin corepack
 RUN corepack enable
