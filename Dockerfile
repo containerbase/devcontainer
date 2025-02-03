@@ -64,7 +64,5 @@ RUN install-tool pnpm 10.1.0
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.13.1
 
-# prepare some tools for devcontainer
-#RUN prepare-tool python
 
 USER $USER_NAME
