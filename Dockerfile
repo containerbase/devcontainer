@@ -58,6 +58,10 @@ RUN install-tool docker v27.5.1
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
 RUN install-tool node 20.18.2
 
+# temporary: install corepack via npm until upgrading to a newer version of node where
+# https://github.com/nodejs/corepack/issues/612#issuecomment-2616588603
+RUN npm install -g corepack@v0.31.0
+
 # enable buildin corepack
 RUN corepack enable
 
