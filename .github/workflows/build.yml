@@ -15,7 +15,6 @@ env:
   DRY_RUN: ${{ github.ref_name != 'main' }}
   OWNER: ${{ github.repository_owner }}
   PLATFORMS: linux/amd64,linux/arm64
-  HUSKY: 0
 
 permissions:
   contents: read
@@ -25,9 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - run: corepack enable
-      - run: pnpm install
+      - name: ⚙️ Setup
+        uses: containerbase/internal-tools/setup@fcbde3cdedad26eabf59776988e2a4b47fee98e5 # v3.7.0
+        with:
+          save-cache: true
+
       - run: pnpm prettier
 
   build:
@@ -49,7 +50,7 @@ jobs:
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ env.OWNER }} --password-stdin
 
       - name: Publish to ghcr.io
-        uses: containerbase/internal-tools@bbbf98bb61968071a4052c89fccd25a292d69c73 # v3.5.22
+        uses: containerbase/internal-tools@fcbde3cdedad26eabf59776988e2a4b47fee98e5 # v3.7.0
         with:
           command: docker-builder
           image-prefix: ghcr.io/${{ env.OWNER }}
@@ -67,6 +68,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          show-progress: false
 
       - name: Init
         run: ./bin/init.sh
