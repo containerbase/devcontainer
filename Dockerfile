@@ -9,7 +9,7 @@ ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
 
 LABEL org.opencontainers.image.source="https://github.com/containerbase/devcontainer" \
-      org.opencontainers.image.version="${CONTAINERBASE_VERSION}"
+  org.opencontainers.image.version="${CONTAINERBASE_VERSION}"
 
 ARG USER_NAME=vscode
 ARG USER_ID=1000
@@ -30,12 +30,12 @@ RUN install-containerbase
 # add required devcontainer and other system packages
 RUN set -ex; \
   install-apt \
-    g++ \
-    locales \
-    make \
-    shellcheck \
-    sudo \
-    ; \
+  g++ \
+  locales \
+  make \
+  shellcheck \
+  sudo \
+  ; \
   locale-gen en_US.UTF-8; \
   true
 
@@ -58,8 +58,8 @@ RUN install-tool docker v27.5.1
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
 RUN install-tool node 20.18.2
 
-# enable buildin corepack
-RUN corepack enable
+# renovate: datasource=npm
+RUN install-tool pnpm 10.1.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.13.1
@@ -68,7 +68,3 @@ RUN install-tool python 3.13.1
 #RUN prepare-tool python
 
 USER $USER_NAME
-
-# disable anoying download promt
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-
