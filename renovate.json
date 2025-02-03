@@ -7,6 +7,12 @@
       "matchManagers": ["dockerfile"],
       "matchDepNames": ["ghcr.io/containerbase/base"],
       "pinDigests": false
+    },
+    {
+      "description": "Trigger fix release for git updates",
+      "matchDepNames": ["git"],
+      "semanticCommitType": "fix",
+      "minimumReleaseAge": "5 days"
     }
   ]
 }
