@@ -59,7 +59,7 @@ RUN install-tool docker v28.1.1
 RUN install-tool node 22.15.1
 
 # renovate: datasource=npm
-RUN install-tool pnpm 10.10.0
+RUN install-tool pnpm 10.11.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.13.3
