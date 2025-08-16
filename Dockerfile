@@ -66,7 +66,7 @@ RUN install-tool corepack 0.34.0
 #RUN install-tool pnpm 10.14.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
-RUN install-tool python 3.13.6
+RUN install-tool python 3.13.7
 
 
 USER $USER_NAME
