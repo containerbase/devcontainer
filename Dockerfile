@@ -56,7 +56,7 @@ RUN git config --system --add safe.directory '*'
 RUN install-tool docker v28.4.0
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
-RUN install-tool node 22.19.0
+RUN install-tool node 22.20.0
 
 # pnpm is broken, so use corepack
 # https://github.com/pnpm/pnpm/issues/9715
