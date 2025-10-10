@@ -58,12 +58,8 @@ RUN install-tool docker v28.5.1
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
 RUN install-tool node 22.20.0
 
-# pnpm is broken, so use corepack
-# https://github.com/pnpm/pnpm/issues/9715
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 # renovate: datasource=npm
-RUN install-tool corepack 0.34.0
-#RUN install-tool pnpm 10.14.0
+RUN install-tool pnpm 10.18.2
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.14.0
