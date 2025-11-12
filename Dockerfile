@@ -56,7 +56,7 @@ RUN git config --system --add safe.directory '*'
 RUN install-tool docker v28.5.2
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
-RUN install-tool node 24.11.0
+RUN install-tool node 24.11.1
 
 # renovate: datasource=npm
 RUN install-tool pnpm 10.20.0
