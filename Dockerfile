@@ -1,7 +1,7 @@
 # renovate: datasource=docker depName=ghcr.io/containerbase/base
 ARG CONTAINERBASE_VERSION=14.6.8
 
-FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} as containerbase
+FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} AS containerbase
 
 FROM ghcr.io/containerbase/ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c
 
@@ -18,9 +18,6 @@ ARG PRIMARY_GROUP_ID=1000
 # Set env and shell
 ENV BASH_ENV=/usr/local/etc/env ENV=/usr/local/etc/env
 SHELL ["/bin/bash" , "-c"]
-
-# This entry point ensures that dumb-init is run
-ENTRYPOINT [ "docker-entrypoint.sh" ]
 
 # Set up containerbase
 COPY --from=containerbase /usr/local/sbin/ /usr/local/sbin/
@@ -70,5 +67,13 @@ RUN install-tool pnpm 10.33.0
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.14.3
 
+# renovate: datasource=github-releases packageName=felipecrs/fixdockergid
+ARG FIXDOCKERGID_VERSION=0.8.1
+ARG USERNAME=$USER_NAME
+RUN curl -fsSL "https://github.com/felipecrs/fixdockergid/raw/v${FIXDOCKERGID_VERSION}/install.sh" | sh -
+
+# This entry point ensures that dumb-init and fixdockergid is run
+ENTRYPOINT [ "docker-entrypoint.sh", "fixdockergid" ]
+CMD [ "sleep", "infinity" ]
 
 USER $USER_NAME
