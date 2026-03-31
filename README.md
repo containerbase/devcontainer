@@ -11,6 +11,7 @@ Commits to `main` branch are automatically build and published.
 
 This image allows `sudo` without password.
 It's setting all directiories as safe for git.
+Also supports docker-on-docker when ran with `--use-api-socket` flag.
 
 Additional installed packages:
 
