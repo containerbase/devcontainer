@@ -62,7 +62,7 @@ RUN install-tool buildx v0.35.0
 RUN install-tool docker-compose v2.40.3
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
-RUN install-tool node 24.16.0
+RUN install-tool node 24.17.0
 
 # renovate: datasource=npm
 RUN install-tool pnpm 11.7.0
