@@ -65,7 +65,7 @@ RUN install-tool docker-compose v2.40.3
 RUN install-tool node 24.19.0
 
 # renovate: datasource=npm
-RUN install-tool pnpm 11.19.0
+RUN install-tool pnpm 11.20.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
 RUN install-tool python 3.14.7
