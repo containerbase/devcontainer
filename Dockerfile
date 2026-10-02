@@ -68,7 +68,7 @@ RUN install-tool node 24.21.0
 RUN install-tool pnpm 11.28.2
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
-RUN install-tool python 3.14.7
+RUN install-tool python 3.14.8
 
 
 USER $USER_NAME
