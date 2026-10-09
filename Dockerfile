@@ -1,9 +1,9 @@
 # renovate: datasource=docker depName=ghcr.io/containerbase/base
-ARG CONTAINERBASE_VERSION=14.6.8
+ARG CONTAINERBASE_VERSION=14.30.2
 
 FROM ghcr.io/containerbase/base:${CONTAINERBASE_VERSION} AS containerbase
 
-FROM ghcr.io/containerbase/ubuntu:24.04@sha256:186072bba1b2f436cbb91ef2567abca677337cfc786c86e107d25b7072feef0c
+FROM ghcr.io/containerbase/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
 
 ARG CONTAINERBASE_VERSION
 ARG APT_HTTP_PROXY
@@ -44,7 +44,7 @@ RUN set e; \
   true
 
 # renovate: datasource=github-tags packageName=git/git
-RUN install-tool git v2.53.0
+RUN install-tool git v2.56.0
 
 # mark all directories as safe
 RUN git config --system --add safe.directory '*'
@@ -53,19 +53,19 @@ RUN git config --system --add safe.directory '*'
 RUN install-tool docker v28.5.2
 
 # renovate: datasource=github-releases packageName=docker/buildx
-RUN install-tool buildx v0.32.1
+RUN install-tool buildx v0.38.0
 
 # renovate: datasource=github-releases packageName=docker/compose
-RUN install-tool docker-compose v2.40.3
+RUN install-tool docker-compose v5.6.0
 
 # renovate: datasource=github-releases packageName=containerbase/node-prebuild versioning=node
-RUN install-tool node 24.14.1
+RUN install-tool node 24.21.0
 
 # renovate: datasource=npm
-RUN install-tool pnpm 10.32.1
+RUN install-tool pnpm 12.10.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
-RUN install-tool python 3.14.3
+RUN install-tool python 3.14.8
 
 # renovate: datasource=github-releases packageName=felipecrs/fixdockergid
 ARG FIXDOCKERGID_VERSION=0.8.1
