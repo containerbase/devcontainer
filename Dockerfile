@@ -65,7 +65,7 @@ RUN install-tool node 24.22.1
 RUN install-tool pnpm 12.15.0
 
 # renovate: datasource=github-releases packageName=containerbase/python-prebuild
-RUN install-tool python 3.15.1
+RUN install-tool python 3.15.2
 
 # renovate: datasource=github-releases packageName=felipecrs/fixdockergid
 ARG FIXDOCKERGID_VERSION=0.8.1
